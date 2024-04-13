@@ -53,3 +53,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
   ```sh
   npm run dev
   ```
+
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
