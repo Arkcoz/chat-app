@@ -72,7 +72,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log(`User ${username} disconnected`);
+        console.log(`${username} disconnected`);
         connectedUsers--;
         io.emit('user count', connectedUsers);
     });

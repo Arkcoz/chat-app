@@ -12,6 +12,13 @@ const Container = styled.div`
     width: 100vw;
 `;
 
+const UserOnline = styled.p`
+    width: 40%;
+    min-width: 300px;
+    text-align: right;
+`;
+
+
 const Main = () => {
     const [userCount, setUserCount] = useState(0);
     const [username, setUsername] = useState('');
@@ -33,7 +40,7 @@ const Main = () => {
     return (
         <Container>
             <h1>Chat App {username ? ` - ${username}` : ''}</h1>
-            <p>Users online: {userCount}</p>
+            <UserOnline>Users online: {userCount}</UserOnline>
             <Chat username={username} />
         </Container>
     );
