@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Arkcoz/chat-app">
-    <img src="chat-app/chat-app-front/public/chat.svg" alt="Logo" width="80" height="80">
+    <img src="presentation/chat.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Chat app</h3>
@@ -13,29 +13,6 @@
     A basic multiplayer chat application, built using React, Express, and Socket.io.
   </p>
 </div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#front-end-with-react">Front-End with React</a></li>
-        <li><a href="#back-end-with-expressjs">Back-End with ExpressJS</a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
