@@ -22,34 +22,43 @@ const io = socketIo(server, {
 
 const PORT = process.env.PORT || 4000;
 
-// Générer un identifiant aléatoire pour chaque utilisateur
+// Generate a random identifier for each user
 function generateRandomNumericId(length) {
-  let result = '';
-  const characters = '0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
+    let result = '';
+    const characters = '0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 }
+
+let connectedUsers = 0;
 
 io.on('connection', (socket) => {
     console.log('New client connected');
+    connectedUsers++;
+
+    io.emit('user count', connectedUsers);
 
     // Send a welcome message with the random identifier 
     const username = `Guest-${generateRandomNumericId(6)}`;
+
+    socket.emit('username', username);
+
     socket.emit('chat message', {
-        user: username,
+        user: 'Me',
         text: 'Welcome to the chat!',
-        time: new Date().toLocaleTimeString()
+        time: new Date().toLocaleTimeString(),
+        special: true
     });
 
-    // Envoyer un message à tous les clients lorsqu'un nouvel utilisateur rejoint le chat
+    // Send a message to all clients when a new user joins the chat
     socket.broadcast.emit('chat message', {
-      user: username,
-      text: `${username} has joined the chat!`,
-      time: new Date().toLocaleTimeString(),
-      special: true // Ajouter un indicateur pour un style spécial
+        user: username,
+        text: `${username} has joined the chat!`,
+        time: new Date().toLocaleTimeString(),
+        special: true // Special messages are displayed in a different way
     });
 
     socket.on('chat message', (msg) => {
@@ -64,6 +73,8 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log(`User ${username} disconnected`);
+        connectedUsers--;
+        io.emit('user count', connectedUsers);
     });
 });
 
